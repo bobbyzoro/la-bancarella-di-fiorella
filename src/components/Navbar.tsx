@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
           {/* Logo e Nome */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <img 
-              src={`${import.meta.env.BASE_URL}favicon.svg`}  // Cambia questo percorso con quello giusto del tuo logo
+              src={`${import.meta.env.BASE_URL}/favicon.svg`}  // Cambia questo percorso con quello giusto del tuo logo
               alt="Logo La Bancarella di Fiorella"
               style={{ width: 80, height: 80, marginRight: 8 }} // Imposta la dimensione del logo e lo spazio tra logo e testo
             />
