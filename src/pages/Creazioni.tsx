@@ -1,9 +1,11 @@
-import React from 'react';
+// src/pages/Creazioni.tsx
+import React, { useState } from 'react';
 import { Title, Meta } from 'react-head';
 import { Container, Box, Typography, Button } from '@mui/material';
 import Hero from '../components/Hero';
 import SectionIntro from '../components/SectionIntro';
 import CreationCard from '../components/CreationCard';
+import GalleryModal, { type GalleryItem } from '../components/GalleryModal';
 
 const creazioni = [
   {
@@ -33,7 +35,73 @@ const creazioni = [
   },
 ];
 
+// Galleria con immagini + dettagli per ogni categoria
+const galleryItems: Record<string, GalleryItem[]> = {
+  'Cappelli in Lana': [
+    {
+      image: '/creazioni/cappelli.webp',
+      description: 'Cappello a coste larghe',
+      price: '€25',
+      color: 'Rosso Bordeaux',
+    },
+    {
+      image: '/creazioni/cappelli.webp',
+      description: 'Cappello a maglia fine',
+      price: '€20',
+      color: 'Blu Navy',
+    },
+  ],
+  'Sciarpe e Scaldacollo': [
+    {
+      image: '/creazioni/sciarpe.webp',
+      description: 'Sciarpa in lana merino',
+      price: '€30',
+      color: 'Grigio chiaro',
+    },
+    {
+      image: '/creazioni/sciarpe.webp',
+      description: 'Sciarpa in lana',
+      price: '€20',
+      color: 'Bianco',
+    },
+  ],
+  'Borse all’uncinetto': [
+    {
+      image: '/creazioni/borse.webp',
+      description: 'Borsa a tracolla stile boho',
+      price: '€35',
+      color: 'Beige e verde oliva',
+    },
+  ],
+  'Decorazioni per la casa': [
+    {
+      image: '/creazioni/decorazioni.webp',
+      description: 'Centrotavola floreale a uncinetto',
+      price: '€15',
+      color: 'Colori assortiti',
+    },
+  ],
+  'Regali personalizzati': [
+    {
+      image: '/creazioni/regali.webp',
+      description: 'Portachiavi a forma di cuore',
+      price: '€8',
+      color: 'Rosa pastello',
+    },
+  ],
+};
+
 const Creazioni: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const handleOpenGallery = (title: string) => {
+    setSelectedCategory(title);
+  };
+
+  const handleCloseGallery = () => {
+    setSelectedCategory(null);
+  };
+
   return (
     <>
       <Title>Le Mie Creazioni - La Bancarella di Fiorella</Title>
@@ -42,7 +110,6 @@ const Creazioni: React.FC = () => {
         content="Scopri le creazioni fatte a mano: cappelli, borse, sciarpe, decorazioni e regali unici. Tutto realizzato con passione."
       />
 
-      {/* Hero */}
       <Hero
         imageUrl="/hero.webp"
         title="Le mie creazioni artigianali"
@@ -56,7 +123,7 @@ const Creazioni: React.FC = () => {
         text="Ogni prodotto nasce da una combinazione di creatività, esperienza e amore per i filati. Che sia per te o per un regalo speciale, troverai qualcosa di unico."
       />
 
-      {/* Creazioni */}
+      {/* Card elenco */}
       <Box>
         <Container maxWidth="lg">
           <Box
@@ -78,15 +145,18 @@ const Creazioni: React.FC = () => {
                   },
                 }}
               >
-                <CreationCard {...creazione} />
+                <CreationCard
+                  {...creazione}
+                  onClick={() => handleOpenGallery(creazione.title)}
+                />
               </Box>
             ))}
           </Box>
         </Container>
       </Box>
 
-      {/* CTA finale */}
-      <Box sx={{ mt:8, py: 6, textAlign: 'center', backgroundColor: 'grey.100' }}>
+      {/* CTA */}
+      <Box sx={{ mt: 8, py: 6, textAlign: 'center', backgroundColor: 'grey.100' }}>
         <Container>
           <Typography variant="h4" sx={{ fontWeight: 'bold', mb: 2 }}>
             Ti piace qualcosa?
@@ -98,7 +168,7 @@ const Creazioni: React.FC = () => {
             variant="contained"
             color="primary"
             component="a"
-            href="https://wa.me/39XXXXXXXXXX" // ← metti qui il tuo numero
+            href="https://wa.me/39XXXXXXXXXX"
             sx={{ fontSize: '1rem', px: 4, py: 1 }}
             target="_blank"
             rel="noopener"
@@ -107,6 +177,15 @@ const Creazioni: React.FC = () => {
           </Button>
         </Container>
       </Box>
+
+      {/* Modale galleria */}
+      {selectedCategory && (
+        <GalleryModal
+          open={true}
+          items={galleryItems[selectedCategory] || []}
+          onClose={handleCloseGallery}
+        />
+      )}
     </>
   );
 };

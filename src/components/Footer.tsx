@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
     >
       <Container maxWidth="lg">
         <Typography variant="h6" gutterBottom textAlign="center">
-          Bancarella di Fiorella
+          La Bancarella di Fiorella
         </Typography>
 
         <Typography variant="body2" color="grey.400" textAlign="center" sx={{ mb: 1 }}>
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
         </Box>
 
         <Typography variant="caption" color="grey.500" display="block" textAlign="center">
-          &copy; {new Date().getFullYear()} Bancarella di Fiorella. Tutti i diritti riservati.
+          &copy; {new Date().getFullYear()} La Bancarella di Fiorella. Tutti i diritti riservati.
         </Typography>
       </Container>
     </Box>

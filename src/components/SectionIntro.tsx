@@ -24,7 +24,7 @@ const SectionIntro: React.FC<SectionIntroProps> = ({
         <Typography
           variant="h6"
           component="p"
-          color="textSecondary"
+          color="text.secondary"
           sx={{ lineHeight: 1.8 }}
         >
           {text}

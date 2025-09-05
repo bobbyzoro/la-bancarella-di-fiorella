@@ -6,11 +6,18 @@ interface CreationCardProps {
   title: string;
   description: string;
   imageUrl: string;
+  onClick: () => void;
 }
 
-const CreationCard: React.FC<CreationCardProps> = ({ title, description, imageUrl }) => {
+const CreationCard: React.FC<CreationCardProps> = ({
+  title,
+  description,
+  imageUrl,
+  onClick,
+}) => {
   return (
     <Card
+      onClick={onClick}
       sx={{
         maxWidth: 345,
         mx: 'auto',
@@ -18,10 +25,11 @@ const CreationCard: React.FC<CreationCardProps> = ({ title, description, imageUr
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
+        cursor: 'pointer',
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         '&:hover': {
-          transform: 'scale(1.05)', // Ingrandisce la card
-          boxShadow: 8, // Aumenta l'ombra
+          transform: 'scale(1.05)',
+          boxShadow: 8,
         },
       }}
     >
@@ -33,11 +41,7 @@ const CreationCard: React.FC<CreationCardProps> = ({ title, description, imageUr
         sx={{ objectFit: 'cover' }}
       />
       <CardContent>
-        <Typography
-          variant="h6"
-          component="h3"
-          sx={{ fontWeight: 'bold', mb: 1 }}
-        >
+        <Typography variant="h6" component="h3" sx={{ fontWeight: 'bold', mb: 1 }}>
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">

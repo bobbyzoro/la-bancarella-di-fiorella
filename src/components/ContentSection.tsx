@@ -86,12 +86,13 @@ const ContentSection: React.FC<ContentSectionProps> = ({
         src={`${import.meta.env.BASE_URL}${imageUrl}`}
         alt={title}
         style={{
-          width: '100%',
-          maxWidth: '100%',
-          maxHeight: 360,
-          borderRadius: 8,
-          objectFit: 'cover',
+          width: '100%',          // Occupa tutta la larghezza
+          height: 'auto',         // Altezza automatica per mantenere il rapporto d'aspetto
+          maxHeight: '360px',     // Imposto un'altezza massima per evitare che l'immagine diventi troppo alta
+          borderRadius: 8,       // Angoli arrotondati
+          objectFit: 'cover',    // Fa in modo che l'immagine copra l'area senza deformarsi
           boxShadow: theme.shadows[3],
+          display: 'block',      // Rimuove eventuali spazi bianchi indesiderati
         }}
       />
 

@@ -41,7 +41,7 @@ const Contatti = () => {
           <Stack spacing={2} sx={{ width: '100%', alignItems: 'center' }}>
             <Button
               variant="contained"
-              color="success"
+              color="primary"
               href="https://wa.me/39XXXXXXXXXX"
               target="_blank"
               rel="noopener"
@@ -61,7 +61,7 @@ const Contatti = () => {
 
             <Button
               variant="text"
-              color="secondary"
+              color="primary"
               href="https://instagram.com/tuo_profilo"
               target="_blank"
               rel="noopener"
