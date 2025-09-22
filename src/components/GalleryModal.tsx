@@ -89,9 +89,9 @@ const GalleryModal: React.FC<GalleryModalProps> = ({ open, items, onClose }) => 
                                     src={`${import.meta.env.BASE_URL}${item.image}`}
                                     alt={item.description}
                                     sx={{
-                                        width: '300px',
-                                        height: '300px',
-                                        objectFit: 'cover',
+                                        width: '90%',  // Adatta l'immagine alla larghezza del contenitore
+                                        maxWidth: '300px',  // Limita la larghezza massima a 300px
+                                        height: 'auto',  // Mantieni le proporzioni originali dell'immagine
                                         borderRadius: '8px',
                                         mb: 3,
                                         mt: 3,
